@@ -1,0 +1,20 @@
+{
+	"EngineConfiguration" : 
+	{
+		"ImGuiSetting" : 
+		{
+			"theme" : "Ammishaddai#Boakye"
+		},
+		"TestConfig" : 
+		{
+			"text" : "Kofi"
+		},
+		"WindowSetting" : 
+		{
+			"fullscreen" : false,
+			"height" : 1000,
+			"title" : "Ammishaddai#Boakye",
+			"width" : 1918
+		}
+	}
+}

@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{fc4b5940-f6dd-4755-a075-2b0ae57f56a2}</ProjectGuid>
+    <RootNamespace>GameEngine2D</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GAME_ENGINE_2D_BUILD_DLL;GLEW_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\deps\stb_s;$(SolutionDir)$(ProjectName)\Core\headers;$(SolutionDir)$(ProjectName)\deps\includes;$(SolutionDir)$(ProjectName)\deps\imgui;$(SolutionDir)$(ProjectName)\Core\headers\ECS;$(SolutionDir)$(ProjectName)\deps\json</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(ProjectName)\deps\libraries</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GAME_ENGINE_2D_BUILD_DLL;GLEW_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\deps\stb_s;$(SolutionDir)$(ProjectName)\Core\headers;$(SolutionDir)$(ProjectName)\deps\includes;$(SolutionDir)$(ProjectName)\deps\imgui</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(ProjectName)\deps\libraries</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\User\Downloads\Compressed\imgui\imgui-master\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Core\headers\ECS\Gameobject.h" />
+    <ClCompile Include="Core\headers\ECS\Systems.cpp" />
+    <ClCompile Include="Core\src\TestLayer2D.cpp" />
+    <ClCompile Include="Core\src\ECS\ComponentArray.cpp" />
+    <ClCompile Include="Core\src\ECS\Components.cpp" />
+    <ClCompile Include="Core\src\ECS\Coordinator.cpp" />
+    <ClCompile Include="Core\src\ECS\Entity.cpp" />
+    <ClCompile Include="Core\src\ECS\Gameobject.cpp" />
+    <ClCompile Include="Core\src\ECS\Scene.cpp" />
+    <ClCompile Include="Core\src\Engine.Config\ConfigurationManager.cpp" />
+    <ClCompile Include="Core\src\Framebuffer.cpp" />
+    <ClCompile Include="Core\src\Cameracontrol.cpp" />
+    <ClCompile Include="Core\core.h" />
+    <ClCompile Include="Core\src\Camera.cpp" />
+    <ClCompile Include="Core\src\ExamplerLayer.cpp" />
+    <ClCompile Include="Core\src\Buffer.cpp" />
+    <ClCompile Include="Core\src\Application.cpp" />
+    <ClCompile Include="Core\src\Event.cpp" />
+    <ClCompile Include="Core\src\EditorLayer.cpp" />
+    <ClCompile Include="Core\src\Layer.cpp" />
+    <ClCompile Include="Core\src\Layerstack.cpp" />
+    <ClCompile Include="Core\src\log.cpp" />
+    <ClCompile Include="Core\src\Material.cpp" />
+    <ClCompile Include="Core\src\Mathematics\mat.cpp" />
+    <ClCompile Include="Core\src\Mathematics\vec.cpp" />
+    <ClCompile Include="Core\src\pch.cpp" />
+    <ClCompile Include="Core\src\rendercommand.cpp" />
+    <ClCompile Include="Core\src\renderer.cpp" />
+    <ClCompile Include="Core\src\rendererAPI.cpp" />
+    <ClCompile Include="Core\src\Shader.cpp" />
+    <ClCompile Include="Core\src\ECS\SystemManager.cpp" />
+    <ClCompile Include="Core\src\Texture.cpp" />
+    <ClCompile Include="Core\src\VertexArray.cpp" />
+    <ClCompile Include="Core\src\VertexBuffer.cpp" />
+    <ClCompile Include="deps\imgui\imgui.cpp" />
+    <ClCompile Include="deps\imgui\imgui_demo.cpp" />
+    <ClCompile Include="deps\imgui\imgui_draw.cpp" />
+    <ClCompile Include="deps\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="deps\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="deps\imgui\imgui_tables.cpp" />
+    <ClCompile Include="deps\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="deps\json\src\lib_json\json_reader.cpp" />
+    <ClCompile Include="deps\json\src\lib_json\json_value.cpp" />
+    <ClCompile Include="deps\json\src\lib_json\json_writer.cpp" />
+    <ClCompile Include="deps\json\src\test_lib_json\fuzz.cpp" />
+    <ClCompile Include="deps\json\src\test_lib_json\jsontest.cpp" />
+    <ClCompile Include="deps\stb_s\stb_image.cpp" />
+    <ClCompile Include="Entry.h" />
+    <ClCompile Include="Renderer2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\User\Downloads\Compressed\imgui\imgui-master\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="Core\headers\Camera.h" />
+    <ClInclude Include="Core\headers\Cameracontrol.h" />
+    <ClInclude Include="Core\headers\ECS\ComponentArray.h" />
+    <ClInclude Include="Core\headers\ECS\Components.h" />
+    <ClInclude Include="Core\headers\ECS\Coordinator.h" />
+    <ClInclude Include="Core\headers\ECS\Entity.h" />
+    <ClInclude Include="Core\headers\ECS\Scene.h" />
+    <ClInclude Include="Core\headers\ECS\Systems.h" />
+    <ClInclude Include="Core\headers\Engine.Config\ConfigurationManager.h" />
+    <ClInclude Include="Core\headers\ExampleLayer.h" />
+    <ClInclude Include="Core\headers\Buffer.h" />
+    <ClInclude Include="Core\headers\Application.h" />
+    <ClInclude Include="Core\headers\Event.h" />
+    <ClInclude Include="Core\headers\Framebuffer.h" />
+    <ClInclude Include="Core\headers\EditorLayer.h" />
+    <ClInclude Include="Core\headers\Layer.h" />
+    <ClInclude Include="Core\headers\Layerstack.h" />
+    <ClInclude Include="Core\headers\log.h" />
+    <ClInclude Include="Core\headers\Material.h" />
+    <ClInclude Include="Core\headers\Mathematics\mat.h" />
+    <ClInclude Include="Core\headers\Mathematics\vec.h" />
+    <ClInclude Include="Core\headers\rendercommand.h" />
+    <ClInclude Include="Core\headers\renderer.h" />
+    <ClInclude Include="Core\headers\rendererAPI.h" />
+    <ClInclude Include="Core\headers\Shader.h" />
+    <ClInclude Include="Core\headers\ECS\SystemManager.h" />
+    <ClInclude Include="Core\headers\Texture.h" />
+    <ClInclude Include="Core\headers\VertexArray.h" />
+    <ClInclude Include="Core\headers\VertexBuffer.h" />
+    <ClInclude Include="Core\headers\pch.h" />
+    <ClInclude Include="deps\imgui\imconfig.h" />
+    <ClInclude Include="deps\imgui\imgui.h" />
+    <ClInclude Include="deps\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="deps\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="deps\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="deps\imgui\imgui_internal.h" />
+    <ClInclude Include="deps\imgui\imstb_rectpack.h" />
+    <ClInclude Include="deps\imgui\imstb_textedit.h" />
+    <ClInclude Include="deps\imgui\imstb_truetype.h" />
+    <ClInclude Include="deps\includes\GLFW\glfw3.h" />
+    <ClInclude Include="deps\includes\GLFW\glfw3native.h" />
+    <ClInclude Include="deps\includes\GL\eglew.h" />
+    <ClInclude Include="deps\includes\GL\glew.h" />
+    <ClInclude Include="deps\includes\GL\glxew.h" />
+    <ClInclude Include="deps\includes\GL\wglew.h" />
+    <ClInclude Include="deps\json\json\allocator.h" />
+    <ClInclude Include="deps\json\json\assertions.h" />
+    <ClInclude Include="deps\json\json\config.h" />
+    <ClInclude Include="deps\json\json\forwards.h" />
+    <ClInclude Include="deps\json\json\json.h" />
+    <ClInclude Include="deps\json\json\json_features.h" />
+    <ClInclude Include="deps\json\json\reader.h" />
+    <ClInclude Include="deps\json\json\value.h" />
+    <ClInclude Include="deps\json\json\version.h" />
+    <ClInclude Include="deps\json\json\writer.h" />
+    <ClInclude Include="deps\json\src\lib_json\json_tool.h" />
+    <ClInclude Include="deps\json\src\test_lib_json\fuzz.h" />
+    <ClInclude Include="deps\json\src\test_lib_json\jsontest.h" />
+    <ClInclude Include="deps\stb_s\stb_image.h" />
+    <ClInclude Include="Core\headers\Renderer2D.h" />
+    <ClInclude Include="Core\headers\TestLayer2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="deps\libraries\glew32.lib" />
+    <Library Include="deps\libraries\glew32s.lib" />
+    <Library Include="deps\libraries\glfw3.lib" />
+    <Library Include="deps\libraries\glfw3dll.lib" />
+    <Library Include="deps\libraries\glfw3_mt.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="deps\json\src\lib_json\json_valueiterator.inl" />
+    <None Include="deps\libraries\glfw3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Core\PFP.jpeg" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
