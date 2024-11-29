@@ -1,8 +1,14 @@
 #include "rendererAPI.h"
 
-void RendererAPI::DrawIndexed(VertexArrayBuffer& vertexarray)
+void RendererAPI::DrawIndexed(VertexArrayBuffer& vertexarray,int count)
 {
-	glDrawElements(GL_TRIANGLES, vertexarray.GetIndexCount(), GL_UNSIGNED_INT, 0);
+	uint32_t __count;
+	if (count == 0)
+	{
+		__count = vertexarray.GetIndexCount();
+	}
+	else { __count = count; }
+	glDrawElements(GL_TRIANGLES, __count, GL_UNSIGNED_INT, 0);
 }
 
 void RendererAPI::DrawArray(VertexArrayBuffer& vertexarray,int count)

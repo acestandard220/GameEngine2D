@@ -31,7 +31,7 @@ namespace GE2D
 	            /// @tparam T Component to add to entity
 	            /// @param  e Entity add component to.
 				template <typename T>
-				inline void AddComponent(Entity e, T component)
+				inline void AddComponent(Entity e, T& component)
 				{
 					mComponentManager->AddComponent<T>(e, component);
 

@@ -46,7 +46,8 @@ bool Application::Init()
 	ImGuiInit();
 
 	//PushLayer(new ExampleLayer("Example Layer"));
-	PushLayer(new Test2D("Sandbox_2D_"));
+	test = new Test2D("Sandbox_2D_");
+	PushLayer(test);
 	
 	editor = new EditorLayer;
 	PushOverLay(editor);
@@ -131,6 +132,7 @@ void Application::OnUpdate()
 	editor->frame->Bind();
 
 	m_layerstack.OnUpdate();
+	test->TempImGuiStuff();
 
 	editor->frame->UnBind();
 

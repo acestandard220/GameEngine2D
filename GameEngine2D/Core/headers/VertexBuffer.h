@@ -6,10 +6,13 @@ class Vertexbuffer : public IBuffer
 {
 public:
 	Vertexbuffer(float* vertex, size_t size, GLenum bufferusage = GL_STATIC_DRAW);
+	Vertexbuffer(size_t size,GLenum bufferusage = GL_DYNAMIC_DRAW);
 	virtual void Bind() override;
 	virtual void Unbind() override;
 	virtual void SetBufferLayout(BufferLayout& layout) override;
 	BufferLayout GetBufferLayout() override;
+
+	virtual void SetData(void* data, size_t size) override;
 private:
 	unsigned int bufferID;
 	GLenum m_bufferusage;
@@ -24,6 +27,9 @@ public:
 
 	virtual void Bind() override;
 	virtual void Unbind() override;
+
+	virtual void SetData(void* data, size_t size) override;
+
 
 	
 private:

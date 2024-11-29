@@ -45,6 +45,11 @@ class Application
     
         EditorLayer* editor;
 
+
+
+        //TEMP:
+        Test2D* test;
+
         std::shared_ptr<GE2D::ECS::Scene> scene;
         GE2D::ECS::GameObject* o;
 

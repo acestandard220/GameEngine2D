@@ -1,7 +1,18 @@
 #include "TestLayer2D.h"
-#include "Components.h"
 #include "SystemManager.h"
 #include "Systems.h"
+#include "Application.h"
+
+void Test2D::TempImGuiStuff()
+{
+	ImGui::Begin("Temporary Component Editor");
+	{
+		
+		ImGui::DragFloat3("Component Position",&tc.Position[0]);
+	}
+	ImGui::End();
+}
+
 
 void Test2D::OnAttach()
 {
@@ -10,12 +21,21 @@ void Test2D::OnAttach()
 	auto& coordinator = scene->GetCoordinator();
 
 	gameObject = scene->AddGameObject();
-	
-	gameObject->AddComponent<GE2D::ECS::TagComponent>({ "Spiral" });
-	
+	GE2D::ECS::TagComponent tg = { { "Spiral" } };
+	gameObject->AddComponent<GE2D::ECS::TagComponent>(tg);
 
-	gameObject->AddComponent<GE2D::ECS::TransformComponent>({ {0.0f,0.0,0.0}, {0.5,0.5,0.5} ,{75.0f,25.0,45.0} });
-	gameObject->AddComponent<GE2D::ECS::SpriteMeshComponent>({ {1.0,0.0,0.0,1.0} });
+	tc = {
+		{ 0.00f, 0.00f, 0.00f},
+		{ 0.20f, 0.50f, 0.30f} ,
+		{ 0.0f, 0.0f, 0.0f}
+	};
+	GE2D::ECS::SpriteMeshComponent sp =
+	{
+		{1.0,0.0,0.0,1.0}
+	};
+
+	gameObject->AddComponent<GE2D::ECS::TransformComponent>(tc);
+	gameObject->AddComponent<GE2D::ECS::SpriteMeshComponent>(sp);
 
 	//std::cout << coordinator.GetEntitySignature(gameObject->GetGameObjectID());
 
@@ -71,16 +91,18 @@ void Test2D::OnUpdate()
 
 
 
-	/*Renderer2D::BeginScene(app.editor->GetCamera());
-	Renderer2D::DrawQuad(pos,0.2f,color);
-	Renderer2D::EndScene();
+	glm::vec3 pos2 = glm::vec3(0.7, 0.0, 0);
+	glm::vec3 pos3 = glm::vec3(0.0, 0.7, 0);
+	glm::vec3 pos4 = glm::vec3(0.7, 0.7, 0);
 
-	glm::vec3 pos2 = glm::vec3(2, 2, 0);
 	color = glm::vec3(1.0, 0.0, 1.0);
 
-	Renderer2D::BeginScene(app.editor->GetCamera());
-	Renderer2D::DrawQuad(pos2,0.4f,color);
-	Renderer2D::EndScene();*/
+	//Renderer2D::BeginScene(app.editor->GetCamera());
+	//Renderer2D::DrawQuad(pos, 0.5f, color);
+	//Renderer2D::DrawQuad(pos2,0.5f,color);
+	//Renderer2D::DrawQuad(pos3, 0.5f, color);
+	//Renderer2D::DrawQuad(pos4, 0.5f, color);
+	//Renderer2D::EndScene();
 
 }
 

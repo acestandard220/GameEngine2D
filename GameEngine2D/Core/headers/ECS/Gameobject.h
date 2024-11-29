@@ -36,7 +36,7 @@ namespace GE2D
             }
 
             template <typename T>
-            inline void AddComponent(T component)
+            inline void AddComponent(T& component)
             {
                 mAssociartedScene->coordinator.AddComponent<T>(ID, component);
             }

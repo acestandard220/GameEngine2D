@@ -31,6 +31,12 @@ IBuffer* IBuffer::CreateVertexBuffer(float* data, size_t size)
 	return buffer;
 }
 
+IBuffer* IBuffer::CreateVertexBuffer(size_t size)
+{
+	IBuffer* buffer = new Vertexbuffer(size);
+	return buffer;
+}
+
 IBuffer* IBuffer::CreateIndexBuffer(unsigned int* indices,int count)
 {
 	if (indices == NULL)

@@ -156,7 +156,7 @@
     <ClCompile Include="Core\src\Mathematics\mat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer2D.cpp">
+    <ClCompile Include="Core\src\Renderer2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Core\src\TestLayer2D.cpp">

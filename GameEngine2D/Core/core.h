@@ -67,6 +67,12 @@ using Ref = std::shared_ptr<T>;
       }\
     }
 
+#define GAME_ENGINE_2D_STRINGIFY(x) #x
+#define GAME_ENGINE_2D_COMPILER_WARN(x) _Pragma(GAME_ENGINE_2D_STRINGIFY(message(x)))
+
+
+
+
 
 
 

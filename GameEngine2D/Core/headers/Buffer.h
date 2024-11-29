@@ -140,7 +140,11 @@ public:
 
 	static IBuffer* CreateBuffer(float* data, size_t size, BUFFER_TYPE buffertype);
 	static IBuffer* CreateVertexBuffer(float* data, size_t size);
+	static IBuffer* CreateVertexBuffer(size_t size);
 	static IBuffer* CreateIndexBuffer(unsigned int* indices, int count);
+	
+	virtual void SetData(void* data, size_t size) = 0;
+
 	static void FlushBufferState();
 
 	virtual void SetBufferLayout(BufferLayout& layout) {}

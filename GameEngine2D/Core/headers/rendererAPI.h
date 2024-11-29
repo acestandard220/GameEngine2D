@@ -5,7 +5,7 @@
 
 class RendererAPI {
 	public:
-	    void DrawIndexed(VertexArrayBuffer& vertexarray);
+	    void DrawIndexed(VertexArrayBuffer& vertexarray , int count = 0);
 		void DrawArray(VertexArrayBuffer& vertexarray,int count);
 
 		void SetClearColor(glm::vec4& color);

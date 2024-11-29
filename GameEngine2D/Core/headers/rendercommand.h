@@ -4,9 +4,9 @@
 
 class RenderCommand {
 	public:
-	    inline static void DrawIndexed(VertexArrayBuffer& vertexarray)
+	    inline static void DrawIndexed(VertexArrayBuffer& vertexarray,int count =0)
 	    {
-	    	s_RendererAPI->DrawIndexed(vertexarray);
+	    	s_RendererAPI->DrawIndexed(vertexarray,count);
 		}
 
 		inline static void DrawArray(VertexArrayBuffer& vertexarray,int count) {

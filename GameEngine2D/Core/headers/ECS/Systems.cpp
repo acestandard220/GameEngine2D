@@ -20,7 +20,6 @@ namespace GE2D {
 			for (auto entity : enitites)
 			{
 				auto& x = coordinator->GetCompoenent<TagComponent>(entity);
-				std::cout << x.Tag;
 			}
 		}
 		
@@ -34,10 +33,7 @@ namespace GE2D {
 				auto& Transform = coordinator->GetCompoenent<TransformComponent>(entity);
 
 				Renderer2D::DrawQuad(Transform.Position,Transform.Scale,Transform.Rotation,SpriteMesh.Color);
-
-			}
-
+		 	}
 		}
-
 	}
 }

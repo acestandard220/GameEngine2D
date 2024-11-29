@@ -9,8 +9,9 @@
 #include "Texture.h"
 #include "Framebuffer.h"
 #include "Renderer2D.h"
-#include "Application.h"
 #include "Scene.h"
+#include "Gameobject.h"
+#include "Components.h"
 
 
 class Test2D : public Layer
@@ -23,6 +24,7 @@ public:
     virtual void OnAttach() override;
     virtual void OnDettach() override;
 
+    void TempImGuiStuff();
 
     virtual void OnUpdate()override;
     void Key(KeyEvent& _event);
@@ -51,6 +53,7 @@ private:
 
     GE2D::ECS::SceneRef scene;
     GE2D::ECS::GameObjectRef gameObject;
+    GE2D::ECS::TransformComponent tc;
 
 
 };

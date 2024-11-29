@@ -186,7 +186,7 @@
     <ClCompile Include="deps\json\src\test_lib_json\jsontest.cpp" />
     <ClCompile Include="deps\stb_s\stb_image.cpp" />
     <ClCompile Include="Entry.h" />
-    <ClCompile Include="Renderer2D.cpp" />
+    <ClCompile Include="Core\src\Renderer2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\User\Downloads\Compressed\imgui\imgui-master\backends\imgui_impl_glfw.h" />

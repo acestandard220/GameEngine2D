@@ -101,7 +101,7 @@ namespace GE2D
 			}
 
 			template <typename T>
-			inline void AddComponent(Entity e, T component)
+			inline void AddComponent(Entity e, T& component)
 			{
 				const char* name = typeid(T).name();
 				if (mComponentArrays.find(name) == mComponentArrays.end())
