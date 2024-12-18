@@ -43,6 +43,8 @@ using Ref = std::shared_ptr<T>;
 #define GEM_RAD2DEG(x) ((x) * 57.295754f)
 #define GEM_DEG2RAD(x) ((x) * 0.0174533f)
 
+#define GEM_ABSOLUTE(x) ((x) < 0) ? -(x) : (x))
+
 #define GAME_ENGINE_2D_OPENGL_ERROR()  \
     { \
         GLenum error = glGetError(); \

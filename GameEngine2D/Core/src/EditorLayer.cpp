@@ -87,7 +87,10 @@ void EditorLayer::RenderSceneHierachyPanel()
 {
 	ImGui::SetNextWindowSizeConstraints(ImVec2{ 200,800 }, ImVec2{ 400,800 });
 	ImGui::Begin("Scene Hierachy");
-	ImGui::Text("This is the Scene hierachy.");
+	{
+		ImGui::Text("This is the Scene hierachy.");
+		//
+	}
 	ImGui::End();
 }
 

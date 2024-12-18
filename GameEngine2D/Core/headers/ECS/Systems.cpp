@@ -30,9 +30,9 @@ namespace GE2D {
 			for (auto entity : enitites)
 			{
 				auto& SpriteMesh = coordinator->GetCompoenent<SpriteMeshComponent>(entity);
-				auto& Transform = coordinator->GetCompoenent<TransformComponent>(entity);
+				TransformComponent* Transform = &coordinator->GetCompoenent<TransformComponent>(entity);
 
-				Renderer2D::DrawQuad(Transform.Position,Transform.Scale,Transform.Rotation,SpriteMesh.Color);
+				Renderer2D::DrawQuad(Transform->Position,Transform->Scale,Transform->Rotation,SpriteMesh.Color);
 		 	}
 		}
 	}

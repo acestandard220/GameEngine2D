@@ -140,6 +140,7 @@
     <ClCompile Include="C:\Users\User\Downloads\Compressed\imgui\imgui-master\backends\imgui_impl_glfw.cpp" />
     <ClCompile Include="Core\headers\ECS\Gameobject.h" />
     <ClCompile Include="Core\headers\ECS\Systems.cpp" />
+    <ClCompile Include="Core\src\Mathematics\primitives.cpp" />
     <ClCompile Include="Core\src\TestLayer2D.cpp" />
     <ClCompile Include="Core\src\ECS\ComponentArray.cpp" />
     <ClCompile Include="Core\src\ECS\Components.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Core\headers\log.h" />
     <ClInclude Include="Core\headers\Material.h" />
     <ClInclude Include="Core\headers\Mathematics\mat.h" />
+    <ClInclude Include="Core\headers\Mathematics\primitives.h" />
     <ClInclude Include="Core\headers\Mathematics\vec.h" />
     <ClInclude Include="Core\headers\rendercommand.h" />
     <ClInclude Include="Core\headers\renderer.h" />

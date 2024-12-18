@@ -4,6 +4,7 @@
 #include "Cameracontrol.h"
 #include "Framebuffer.h"
 #include "Renderer2D.h"
+#include "Scene.h"
 
 enum EDITOR_THEME
 {
@@ -45,6 +46,9 @@ public:
 	
 	Framebuffer* frame;
 	OrthographicCameraController* m_cameracontrol;
+
+	//In Construction:
+	GE2D::ECS::SceneRef sampleScene;
 
 	glm::vec2 m_viewPortSize{ 0.0,0.0 };
 

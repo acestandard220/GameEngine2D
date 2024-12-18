@@ -7,13 +7,14 @@ void Test2D::TempImGuiStuff()
 {
 	ImGui::Begin("Temporary Component Editor");
 	{
-		
-		ImGui::DragFloat3("Component Position",&tc.Position[0]);
+		auto& transform = gameObject->GetComponent<GE2D::ECS::TransformComponent>();
+
+		ImGui::InputFloat3("Test", &transform.Position[0]);
 	}
 	ImGui::End();
 }
 
-
+using namespace GE2D;
 void Test2D::OnAttach()
 {
 	glm::vec4 c{ 1.0,0.0,0.0,0.0 };
@@ -44,6 +45,7 @@ void Test2D::OnAttach()
 
 	std::cout << gameObject->GetGameObjectName();
 	
+	
 
 	source = new ShaderSource
 	(
@@ -51,6 +53,7 @@ void Test2D::OnAttach()
 		"P:/Projects/VS/GameEngine2D/GameEngine2D/Core/assets/builtin_shaders/triangle_fragment.glsl"
 	);
 	shader = new Shader(*source);
+	
 
 	BufferLayout* layout = new BufferLayout{
 		{"Positions",FLOAT3,POSITION},

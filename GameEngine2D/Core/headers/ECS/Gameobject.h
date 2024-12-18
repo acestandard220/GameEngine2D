@@ -50,7 +50,7 @@ namespace GE2D
             template <typename T>
             inline T& GetComponent()
             {
-                mAssociartedScene->coordinator.GetCompoenent<T>(ID);
+                return mAssociartedScene->coordinator.GetCompoenent<T>(ID);
             }
 
             std::string& GetGameObjectName() { return name; }
