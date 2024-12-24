@@ -56,11 +56,13 @@ class Renderer
 		glm::vec2 texture_coord;
 	};
 
+	static int shared_offset;
+	static int shared_draw_count;
 	public:
 		static bool Initialize();
-		static void DrawQuad(Sprite& sprite, glm::vec3 pos, glm::vec2 size);
 		static void DrawQuad(GameObject& object);
-		static void DrawQuad(glm::vec3 pos, glm::vec2 size, glm::vec3 color);
+		static void EndScene();
+
 
 	
 	private:

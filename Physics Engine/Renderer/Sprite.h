@@ -22,5 +22,5 @@ struct Sprite
 private:
 	bool textured = false;
 	std::shared_ptr<Texture2D> texture;
-	glm::vec3 color;
+	glm::vec3 color{1.0f,1.0f,1.0f};
 };

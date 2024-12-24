@@ -10,6 +10,10 @@ uint32_t Renderer::vao = 0;
 uint32_t Renderer::vbo = 0;
 uint32_t Renderer::program = 0;
 
+int Renderer::shared_offset = 0;
+int Renderer::shared_draw_count = 6;
+
+
 bool Renderer::Initialize()
 {
 	{
@@ -18,6 +22,9 @@ bool Renderer::Initialize()
 
 		glGenBuffers(1, &vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+		//NEW
+		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 30 * 10000, nullptr, GL_DYNAMIC_DRAW);
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), 0);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
@@ -73,58 +80,12 @@ bool Renderer::Initialize()
 	}
 
 	{
-		view = glm::lookAt(glm::vec3( 0.0f,0.0f,3.0f ), glm::vec3( 0.0f,0.0f,0.0f ), glm::vec3( 0.0f,1.0f,0.0f ));
-		proj = glm::perspective(glm::radians(45.0f), (float)800.0f / (float)800.0f, 0.1f, 100.0f);
+		view = glm::lookAt(glm::vec3( 0.0f,0.0f,1.0f), glm::vec3( 0.0f,0.0f,0.0f ), glm::vec3( 0.0f,1.0f,0.0f ));
+		proj = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f);
+
 	}
 
 	return true;
-}
-
-void Renderer::DrawQuad(Sprite& sprite, glm::vec3 position, glm::vec2 size)
-{
-	VertexType *vertex_data = new VertexType[6];
-	vertex_data[0].position = { position };
-	vertex_data[0].texture_coord = { 0.0f, 0.0f };
-
-	vertex_data[1].position = { position.x, position.y + size.y, 0.0f };
-	vertex_data[1].texture_coord = { 0.0f, 1.0f };
-
-	vertex_data[2].position = { position.x + size.x, position.y + size.y, 0.0f };
-	vertex_data[2].texture_coord = { 1.0f, 1.0f };
-
-	vertex_data[3].position = { position.x,position.y,0.0f };
-	vertex_data[3].texture_coord = { 0.0f, 0.0f };
-
-	vertex_data[4].position = { position.x + size.x,position.y,0.0f };
-	vertex_data[4].texture_coord = { 1.0f, 0.0f };
-
-	vertex_data[5].position = { position.x + size.x, position.y + size.y, 0.0f };
-	vertex_data[5].texture_coord = { 1.0f, 1.0f };
-
-	glBindVertexArray(vao);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*30, vertex_data, GL_DYNAMIC_DRAW);
-
-	glUseProgram(program);
-
-	glUniform1i(glGetUniformLocation(program, "text"), 0);
-	glActiveTexture(GL_TEXTURE0);
-	if (sprite.IsTextured())
-	{
-		glBindTexture(GL_TEXTURE_2D, sprite.GetTexture());
-	}
-	else
-	{
-		glBindTexture(GL_TEXTURE_2D, white_texture->GetID());
-	}
-	
-	glUniform3f(glGetUniformLocation(program, "color"), sprite.GetColor().x, sprite.GetColor().y, sprite.GetColor().z);
-
-	glm::mat4 vp = proj * view;
-	glUniformMatrix4fv(glGetUniformLocation(program, "vp"), 1, GL_FALSE, &vp[0][0]);
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-
 }
 
 
@@ -132,28 +93,32 @@ void Renderer::DrawQuad(Sprite& sprite, glm::vec3 position, glm::vec2 size)
 void Renderer::DrawQuad(GameObject& object)
 {
 	VertexType* vertex_data = new VertexType[6];
-	vertex_data[0].position = { object.position };
+	vertex_data[0].position = { object.bounds.position };
 	vertex_data[0].texture_coord = { 0.0f, 0.0f };
 
-	vertex_data[1].position = { object.position.x, object.position.y + object.size.y, 0.0f };
+	vertex_data[1].position = { object.bounds.position.x, object.bounds.position.y + object.bounds.size.y, 0.0f };
 	vertex_data[1].texture_coord = { 0.0f, 1.0f };
 
-	vertex_data[2].position = { object.position.x + object.size.x,object.position.y + object.size.y, 0.0f };
+	vertex_data[2].position = { object.bounds.position.x + object.bounds.size.x,object.bounds.position.y + object.bounds.size.y, 0.0f };
 	vertex_data[2].texture_coord = { 1.0f, 1.0f };
 
-	vertex_data[3].position = { object.position.x,object.position.y,0.0f };
+	vertex_data[3].position = { object.bounds.position.x,object.bounds.position.y,0.0f };
 	vertex_data[3].texture_coord = { 0.0f, 0.0f };
 
-	vertex_data[4].position = { object.position.x + object.size.x,object.position.y,0.0f };
+	vertex_data[4].position = { object.bounds.position.x + object.bounds.size.x,object.bounds.position.y,0.0f };
 	vertex_data[4].texture_coord = { 1.0f, 0.0f };
 
-	vertex_data[5].position = { object.position.x + object.size.x, object.position.y + object.size.y, 0.0f };
+	vertex_data[5].position = { object.bounds.position.x + object.bounds.size.x, object.bounds.position.y + object.bounds.size.y, 0.0f };
 	vertex_data[5].texture_coord = { 1.0f, 1.0f };
 
+	//NEW
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 30, vertex_data, GL_DYNAMIC_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, shared_offset, sizeof(float) * 30, vertex_data);
 
+	shared_draw_count += 6;
+	shared_offset += sizeof(float) * 30;
+	
 	glUseProgram(program);
 
 	glUniform1i(glGetUniformLocation(program, "text"), 0);
@@ -172,6 +137,11 @@ void Renderer::DrawQuad(GameObject& object)
 	glm::mat4 vp = proj * view;
 	glUniformMatrix4fv(glGetUniformLocation(program, "vp"), 1, GL_FALSE, &vp[0][0]);
 
-	glDrawArrays(GL_TRIANGLES, 0, 6);
+}
 
+void Renderer::EndScene()
+{
+	glDrawArrays(GL_TRIANGLES, 0, shared_draw_count);
+	shared_draw_count = 0;
+	shared_offset = 0;
 }
