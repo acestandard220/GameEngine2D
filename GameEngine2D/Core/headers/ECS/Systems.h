@@ -23,14 +23,27 @@ namespace GE2D
 		    public:
 			    SpriteMeshRenderer() = default;
 
-			
-
-			// Inherited via ISystem
 			    void OnUpdate(void*) override;
 
 		};
 
-		
+		//NOT COMPLETE CANNOT be used
+		class CollisionSystem : public ISystem
+		{
+			public:
+				CollisionSystem() = default;
+
+				void OnUpdate(void*) override;
+		};
+
+		class PlayerControllSystem : public ISystem
+		{
+		public:
+			PlayerControllSystem() = default;
+
+			void OnUpdate(void*) override;
+
+		};
 
 	}
 }

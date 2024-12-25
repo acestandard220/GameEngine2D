@@ -5,6 +5,7 @@ namespace GE2D
 {
 	namespace ECS
 	{
+		class QuadTree;
 		class Coordinator
 		{
 		    public:
@@ -92,6 +93,7 @@ namespace GE2D
 
 				inline void OnUpdate()
 				{
+					
 					mSystemManager->OnUpdate(this);
 				}
 
@@ -104,6 +106,76 @@ namespace GE2D
 				std::unique_ptr<EntityManager> mEntityManager;
 				std::unique_ptr<ComponentManager> mComponentManager;
 				std::unique_ptr<SystemManager> mSystemManager;
+
+			public:
+				std::unique_ptr<QuadTree> spatial_partition;
 		};
+
+
+		class QuadTree
+		{
+		public:
+			QuadTree(int level, glm::vec3 position, glm::vec2 size, Coordinator& coord);
+			~QuadTree();
+
+			void Insert(Entity e);
+			bool Remove(Entity e);
+
+			void Clear();
+
+			std::vector<Entity> GetFriendEntities(Entity e);
+		private:
+			void Split();
+			std::vector<QuadTree*> GetQuads(Entity);
+
+		private:
+			const int MAX_PER_QUAD = 5;
+			const int MAX_LEVEL = 10;
+			int level;
+
+			Coordinator& coordinator;
+			std::vector<Entity> mEntities;
+
+
+			QuadTree* northEast;
+			QuadTree* northWest;
+			QuadTree* southEast;
+			QuadTree* southWest;
+
+			struct Box
+			{
+				glm::vec3 position;
+				glm::vec2 size;
+
+				glm::vec3 GetMin()const { return position; }
+				glm::vec3 GetMax()const { return glm::vec3(position + glm::vec3(size, 1.0f)); }
+
+				bool Contains(glm::vec3 pos, glm::vec2 size)
+				{
+					Box box(pos, size);
+					if (box.GetMin().x >= this->GetMin().x && box.GetMax().x <= this->GetMax().x)
+					{
+						if (box.GetMin().y >= this->GetMin().y && box.GetMax().y <= this->GetMax().y)
+						{
+							return true;
+						}
+					}
+					return false;
+				}
+
+				Box(glm::vec3 pos, glm::vec2 size)
+					:position(pos), size(size)
+				{
+
+				}
+			};
+
+			Box bounds;
+
+
+		};
+
 	}
 }
+
+

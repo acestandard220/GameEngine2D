@@ -29,6 +29,7 @@ namespace GE2D
 				void SetSceneName(std::string&);
 
 				Coordinator& GetCoordinator() { return coordinator; }
+				//QuadTree tree;
 
 			private:
 				//Manual Registerations
@@ -45,7 +46,12 @@ namespace GE2D
 		    private:
 				GE2D::ECS::uMapping<std::string, Entity> mAssociatedEntities;
 				std::string mSceneName;
+
+			private:
+
 		};
+
+		
 
 		using SceneRef = std::shared_ptr<Scene>;
 		using SceneScope = std::unique_ptr<Scene>;

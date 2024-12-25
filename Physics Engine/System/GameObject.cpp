@@ -33,3 +33,8 @@ void Ball::OnUpdate(float dt)
 	center = { bounds.position.x + diameter / 2, bounds.position.y + diameter / 2 };
 }
 
+void Ball::Kill()
+{
+	delete this;
+}
+

@@ -22,7 +22,7 @@ void EditorLayer::OnAttach()
 		1280,720
 	};
 	frame = new Framebuffer(spec);
-	m_cameracontrol = new OrthographicCameraController(1280.0f / 720.0f);
+	m_cameracontrol = new OrthographicCameraController(10.0f);
 }
 
 void EditorLayer::OnDettach()

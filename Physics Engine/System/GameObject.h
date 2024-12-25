@@ -37,6 +37,7 @@ public:
 	}
 
 	virtual void OnUpdate(float) = 0;
+	virtual void Kill() = 0;
 
 	glm::vec3 velocity;
 
@@ -63,7 +64,7 @@ public:
 	}
 
 	virtual void OnUpdate(float dt)override;
-
+	virtual void Kill()override;
 private:
 	glm::vec2 center;
 	float diameter;

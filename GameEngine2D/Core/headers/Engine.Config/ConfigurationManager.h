@@ -1,6 +1,6 @@
 #pragma once
-#include "json/json.h"
-#include "json/value.h"
+#include "../../Deps/json/json/json.h"
+#include "../../Deps/json/json/value.h"
 #include "../core.h"
 #include "pch.h"
 

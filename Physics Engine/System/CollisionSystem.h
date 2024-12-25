@@ -12,6 +12,7 @@ constexpr size_t VECTOR4_SIZE = sizeof(float) * 4;
 
 #include "GameObject.h"
 #include <vector>
+#include <unordered_map>
 
 class CollisionSystem
 {
@@ -70,3 +71,37 @@ private:
 };
 
 
+class Grid
+{
+public:
+	Grid(AABB _bounds,int _unit)
+		:bounds(_bounds),unit(_unit)
+	{
+		
+	}
+
+	struct UnitGrid;
+	void Insert(GameObject& object);
+	void Spit_Debug();
+private:
+	AABB bounds;
+	int unit;
+	std::unordered_map<UnitGrid*,std::vector<GameObject*>> mGrids;
+
+private:
+	struct UnitGrid
+	{
+	public:
+		UnitGrid();
+
+		AABB bounds;
+
+		UnitGrid(const AABB& bounds)
+			: bounds(bounds)
+		{
+			
+		}
+	private:
+	
+	};
+};

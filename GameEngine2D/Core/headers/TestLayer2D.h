@@ -9,9 +9,9 @@
 #include "Texture.h"
 #include "Framebuffer.h"
 #include "Renderer2D.h"
-#include "Scene.h"
-#include "Gameobject.h"
-#include "Components.h"
+#include "ECS/Scene.h"
+#include "ECS/Gameobject.h"
+#include "ECS/Components.h"
 
 
 class Test2D : public Layer

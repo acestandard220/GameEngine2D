@@ -9,8 +9,8 @@
 #include "TestLayer2D.h"
 
 
-#include "Scene.h"
-#include "Gameobject.h"
+#include "ECS/Scene.h"
+#include "ECS/Gameobject.h"
 
 class Application
 {

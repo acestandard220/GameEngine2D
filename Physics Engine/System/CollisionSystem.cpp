@@ -1,3 +1,7 @@
+#include "Coordinator.h"
+#include "Coordinator.h"
+#include "Coordinator.h"
+#include "Coordinator.h"
 #include "CollisionSystem.h"
 #include <iostream>
 #include <glm/ext/matrix_transform.hpp>
@@ -247,6 +251,7 @@ QuadTree::QuadTree(int lev, glm::vec3 pos, glm::vec2 size)
 	
 }
 
+
 QuadTree::~QuadTree()
 {
 	//glDeleteBuffers(1, &vbo);
@@ -387,6 +392,7 @@ void QuadTree::Split()
 	northEast = std::make_shared<QuadTree>(level + 1, glm::vec3(new_position.x + new_size.x, new_position.y + new_size.y,0.0f), new_size);	
 }
 
+
 void QuadTree::Clear()
 {
 	northEast.reset();
@@ -425,10 +431,7 @@ std::vector<GameObject*> QuadTree::GetFriendObjects(GameObject& object)
 	}
 
 	if (this->Bounds.Contains(object.bounds))
-	{
-		std::vector<GameObject*> temp = mObjects;
-		return temp;
-	}
+		return mObjects;
 }
 
 void QuadTree::Traverse()
@@ -441,4 +444,16 @@ void QuadTree::Traverse()
 		southWest->Traverse();
 	}
 	Render();
+}
+
+void Grid::Insert(GameObject& object)
+{
+}
+
+void Grid::Spit_Debug()
+{
+	for (auto x : mGrids)
+	{
+		std::cout<< "X: " << x.second->bounds.position.x << "Y: " << x.second->bounds.position.y << std::endl;
+	}
 }

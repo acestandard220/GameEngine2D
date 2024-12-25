@@ -50,11 +50,8 @@ void Renderer2D::Init()
 
 	s_Data->shader = new Shader
 	(
-		*new ShaderSource
-		(
 			"P:/Projects/VS/GameEngine2D/GameEngine2D/Core/assets/builtin_shaders/quads_vertex.glsl",
 			"P:/Projects/VS/GameEngine2D/GameEngine2D/Core/assets/builtin_shaders/quads_fragment.glsl"
-		)
 	);
 
 	BufferLayout lay = 
@@ -88,7 +85,7 @@ void Renderer2D::Init()
 	s_Data->quadvertex_base = new QuadVertex[s_Data->MAX_QUADS];
 	s_Data->QuadIndexCount = 0;
 	
-	GAME_ENGINE_2D_OPENGL_ERROR();
+	//GAME_ENGINE_2D_OPENGL_ERROR();
 
 }
 
@@ -98,9 +95,9 @@ void Renderer2D::BeginScene(OrthographicCamera& camera)
 	s_Data->quadvertex_ptr = s_Data->quadvertex_base;
 
 	s_Data->shader->Use();
-	s_Data->shader->SetMatrix4("vp", s_Data->cameraData);
+	s_Data->shader->SetMatrix4("vp", camera.GetViewProjection());
 
-	GAME_ENGINE_2D_OPENGL_ERROR();
+	//GAME_ENGINE_2D_OPENGL_ERROR();
 }
 
 

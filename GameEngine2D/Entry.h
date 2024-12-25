@@ -1,6 +1,6 @@
 #include "Application.h"
-#include "Scene.h"
-#include "Gameobject.h"
+#include "ECS/Scene.h"
+#include "ECS/Gameobject.h"
 
 using namespace GE2D::ECS;
 

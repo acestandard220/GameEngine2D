@@ -16,7 +16,6 @@ namespace GE2D {
 		void TagSystem::OnUpdate(void* co)
 		{
 			Coordinator* coordinator = (Coordinator*)co;
-			//std::cout << "Tag System OnUpdate\n";
 			for (auto entity : enitites)
 			{
 				auto& x = coordinator->GetCompoenent<TagComponent>(entity);
@@ -34,6 +33,32 @@ namespace GE2D {
 
 				Renderer2D::DrawQuad(Transform->Position,Transform->Scale,Transform->Rotation,SpriteMesh.Color);
 		 	}
+		}
+
+
+		void CollisionSystem::OnUpdate(void* co)
+		{
+			Coordinator* coordinator = (Coordinator*)co;
+			coordinator->spatial_partition->Clear();
+			for (auto entity : enitites)
+				coordinator->spatial_partition->Insert(entity);
+			
+			for (auto entity : enitites)
+			{
+
+			}
+			coordinator->spatial_partition->Clear();
+		}
+
+
+		void PlayerControllSystem::OnUpdate(void* co)
+		{
+			Coordinator* coordinator = (Coordinator*)co;
+			for (auto entity : enitites)
+			{
+				auto component = coordinator->GetCompoenent<PlayerControllerComponent>(entity);
+				component.ControlCallback(coordinator);
+			}
 		}
 	}
 }

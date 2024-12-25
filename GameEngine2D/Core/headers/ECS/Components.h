@@ -10,7 +10,8 @@ namespace GE2D
 		struct TagComponent
 		{
 			std::string Tag;
-			TagComponent(const char* tag):Tag(tag)
+			TagComponent(const char* tag)
+				:Tag(tag)
 			{ }
 			TagComponent() = default;
 
@@ -33,7 +34,19 @@ namespace GE2D
 			SpriteMeshComponent(const SpriteMeshComponent& other) = default;
 		};
 
+		struct BoxCollider
+		{
+			BoxCollider() = default;
+			BoxCollider(const BoxCollider& other) = default;
+		};
 
+		struct PlayerControllerComponent
+		{
+			std::function<void(Coordinator* co)> ControlCallback;
+
+			PlayerControllerComponent() = default;
+			PlayerControllerComponent(const PlayerControllerComponent& other) = default;
+		};
 
 
 

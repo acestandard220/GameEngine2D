@@ -4,7 +4,7 @@
 #include "Cameracontrol.h"
 #include "Framebuffer.h"
 #include "Renderer2D.h"
-#include "Scene.h"
+#include "ECS/Scene.h"
 
 enum EDITOR_THEME
 {

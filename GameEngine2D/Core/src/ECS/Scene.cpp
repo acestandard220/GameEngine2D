@@ -1,14 +1,16 @@
-#include "Scene.h"
-#include "Gameobject.h"
-#include "Components.h"
-#include "Systems.h"
+#include "ECS/Scene.h"
+#include "ECS/Gameobject.h"
+#include "ECS/Components.h"
+#include "ECS/Systems.h"
+
 
 namespace GE2D
 {
 	namespace ECS
 	{
 
-		Scene::Scene(const char* name) :mSceneName(name)
+		Scene::Scene(const char* name) 
+			:mSceneName(name)
 		{
 			coordinator.Init();
 			RegisterComponents();
@@ -64,29 +66,49 @@ namespace GE2D
 
 		void Scene::RegisterComponents()
 		{
-			auto TagCompSignMap = coordinator.RegisterComponent<TagComponent>();
-			auto TranformCompSignMap = coordinator.RegisterComponent<TransformComponent>();
-			auto SpriteMeshComSignMap = coordinator.RegisterComponent<SpriteMeshComponent>();
+			auto TagCompSignMap        = coordinator.RegisterComponent<TagComponent>();
+			auto TranformCompSignMap   = coordinator.RegisterComponent<TransformComponent>();
+			auto SpriteMeshComSignMap  = coordinator.RegisterComponent<SpriteMeshComponent>();
+			auto BoxColliderComSignMap = coordinator.RegisterComponent<BoxCollider>();
+			auto PlayerContCompSignMap = coordinator.RegisterComponent<PlayerControllerComponent>();
 		}
 
 		void Scene::RegisterSystems()
 		{
+
+			auto tagCompMap    = coordinator.GetCompoenentType<TagComponent>();
+			auto transCompMap  = coordinator.GetCompoenentType<TransformComponent>();
+			auto spriteCompMap = coordinator.GetCompoenentType<SpriteMeshComponent>();
+			auto playerContrComMap = coordinator.GetCompoenentType<PlayerControllerComponent>();
+				
 			coordinator.RegisterSystem<TagSystem>();
 			Signature tagSysSignature;
-			tagSysSignature.set(coordinator.GetCompoenentType<TagComponent>(), true);
+			tagSysSignature.set(tagCompMap, true);
 			coordinator.SetSystemSignature<TagSystem>(tagSysSignature);
 
 			coordinator.RegisterSystem<SpriteMeshRenderer>();
 			Signature spriteMeshRenSignature;
-			spriteMeshRenSignature.set(coordinator.GetCompoenentType<TransformComponent>(), true);
-			spriteMeshRenSignature.set(coordinator.GetCompoenentType<SpriteMeshComponent>(), true);
+			spriteMeshRenSignature.set(transCompMap, true);
+			spriteMeshRenSignature.set(spriteCompMap, true);
 			coordinator.SetSystemSignature<SpriteMeshRenderer>(spriteMeshRenSignature);
+
+
+			coordinator.RegisterSystem<PlayerControllSystem>();
+			Signature playerContrSysSignature;
+			playerContrSysSignature.set(transCompMap, true);
+			playerContrSysSignature.set(playerContrComMap, true);
+
+
 		}
 
 		void Scene::SetSystemSignatures()
 		{
 		}
 
+
+
+
+		
 
 	}
 }

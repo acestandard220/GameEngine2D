@@ -78,8 +78,12 @@ int main()
         AssetManager::LoadTexture("Ball", "ball.png");
         Renderer::Initialize();
     }
+
+    glm::vec3 bottom_position = { 0.0,0.0,0.0f };
+    glm::vec3 size(20.f);
   
     QuadTree tree(0, { LEFT_BOUND, BOTTOM_BOUND , 0.0f}, { 20.0f, 20.0 });
+    Grid grids({ bottom_position,size },20);
     
 	Sprite sprite({ 1.0f,1.0f,0.0f });
 	sprite.LoadTexture("Ball");
@@ -107,6 +111,8 @@ int main()
     for (auto x : balls)
         tree.Insert(*x);
 
+    grids.Spit_Debug();
+
     FPS_TRACK();
     while (!glfwWindowShouldClose(window))
     {
@@ -123,12 +129,12 @@ int main()
                 Renderer::DrawQuad(*x);
                 x->OnUpdate(0.005);
                 CollisionSystem::OnBoundsCollided(*x);
-                CollisionSystem::OnOtherCollided(*x);
+                //CollisionSystem::OnOtherCollided(*x);
 
                 tree.Insert(*x);
-                //auto c = tree.GetFriendObjects(*x);
+                auto c = tree.GetFriendObjects(*x);
                 
-                //CollisionSystem::OnOtherCollided(*x, c);
+                CollisionSystem::OnOtherCollided(*x, c);
             }
             Renderer::EndScene();
           

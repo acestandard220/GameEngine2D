@@ -1,4 +1,4 @@
-#include "Entity.h"
+#include "ECS/Entity.h"
 namespace GE2D
 {
 	namespace ECS

@@ -1,6 +1,6 @@
 #include "TestLayer2D.h"
-#include "SystemManager.h"
-#include "Systems.h"
+#include "ECS/SystemManager.h"
+#include "ECS/Systems.h"
 #include "Application.h"
 
 void Test2D::TempImGuiStuff()
@@ -14,31 +14,31 @@ void Test2D::TempImGuiStuff()
 	ImGui::End();
 }
 
+void ControlCallback(GE2D::ECS::Coordinator* coordinator)
+{
+	std::cout << "Calling through player control system\n";
+	std::cout << "Calling from GameObject with tag" << "" << "\n";
+}
 using namespace GE2D;
 void Test2D::OnAttach()
 {
 	glm::vec4 c{ 1.0,0.0,0.0,0.0 };
+
 	scene = std::make_shared<GE2D::ECS::Scene>("TEST2D_SCENE");
 	auto& coordinator = scene->GetCoordinator();
 
 	gameObject = scene->AddGameObject();
 	GE2D::ECS::TagComponent tg = { { "Spiral" } };
-	gameObject->AddComponent<GE2D::ECS::TagComponent>(tg);
-
-	tc = {
-		{ 0.00f, 0.00f, 0.00f},
-		{ 0.20f, 0.50f, 0.30f} ,
-		{ 0.0f, 0.0f, 0.0f}
-	};
+	
 	GE2D::ECS::SpriteMeshComponent sp =
 	{
 		{1.0,0.0,0.0,1.0}
 	};
+	GE2D::ECS::PlayerControllerComponent pcntr;
+	pcntr.ControlCallback = ControlCallback;
 
-	gameObject->AddComponent<GE2D::ECS::TransformComponent>(tc);
 	gameObject->AddComponent<GE2D::ECS::SpriteMeshComponent>(sp);
-
-	//std::cout << coordinator.GetEntitySignature(gameObject->GetGameObjectID());
+	gameObject->AddComponent<GE2D::ECS::PlayerControllerComponent>(pcntr);
 
 	std::shared_ptr<GE2D::ECS::GameObject> gameObject_2 = scene->AddGameObject();
 
@@ -100,12 +100,12 @@ void Test2D::OnUpdate()
 
 	color = glm::vec3(1.0, 0.0, 1.0);
 
-	//Renderer2D::BeginScene(app.editor->GetCamera());
-	//Renderer2D::DrawQuad(pos, 0.5f, color);
-	//Renderer2D::DrawQuad(pos2,0.5f,color);
-	//Renderer2D::DrawQuad(pos3, 0.5f, color);
-	//Renderer2D::DrawQuad(pos4, 0.5f, color);
-	//Renderer2D::EndScene();
+	/*Renderer2D::BeginScene(app.editor->GetCamera());
+	Renderer2D::DrawQuad(pos, 0.5f, color);
+	Renderer2D::DrawQuad(pos2,0.5f,color);
+	Renderer2D::DrawQuad(pos3, 0.5f, color);
+	Renderer2D::DrawQuad(pos4, 0.5f, color);
+	Renderer2D::EndScene();*/
 
 }
 

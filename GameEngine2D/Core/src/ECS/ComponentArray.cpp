@@ -1,4 +1,4 @@
-#include "ComponentArray.h"
+#include "ECS/ComponentArray.h"
 
 namespace GE2D
 {
